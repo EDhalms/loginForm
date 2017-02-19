@@ -1,0 +1,7 @@
+1) npm install redux --save --save-exact
+2) npm install react-redux --save --save-exact
+
+3) window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+
+4) npm i redux-thunk --save
+5) npm i redux-devtools-extension --save
