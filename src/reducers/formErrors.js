@@ -1,8 +1,8 @@
 let initialState = {
-    firstNameIsValid: false,
-    lastNameIsValid: false,
-    emailIsValid: false,
-    passwordIsValid: false
+    firstNameIsValid: true,
+    lastNameIsValid: true,
+    emailIsValid: true,
+    passwordIsValid: true
 };
 
 export default function formErrors(state = initialState, action) {

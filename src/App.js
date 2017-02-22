@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 
 import './App.css';
 
-import LoginForm from './components/LoginForm';
+import LoginForm from './components/SignUpForm';
 
 //import of actions
 import * as formFieldsActions from './actions/formFields';
@@ -64,7 +64,6 @@ class App extends Component {
         this.validateField(patterns.name, this.props.userData.lastName, this.props.validateLastName);
         this.validateField(patterns.email, this.props.userData.email, this.props.validateEmail);
         this.validateField(patterns.password, this.props.userData.password, this.props.validatePassword);
-
     };
 
     validateField = (pattern, fieldValue, dispatcherError) => {
@@ -101,6 +100,7 @@ class App extends Component {
                     handleSubmitForm={this.handleSubmitForm}
                     onChangeEmailInput={this.onChangeEmailInput}
                     userData={this.props.userData}
+                    firstNameIsValid={this.props.formErrors.firstNameIsValid}
                 />
             </div>
         );

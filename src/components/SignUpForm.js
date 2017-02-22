@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import '../css/SignUpForm.css';
+
 class LoginForm extends Component {
     
     constructor(props) {
@@ -23,39 +25,44 @@ class LoginForm extends Component {
     };
 
     handleSubmitForm = (e) => {
-        this.props.handleSubmitForm(e)
+        this.props.handleSubmitForm(e);
     };
     
     render() {
 
         return(
-            <form action="#">
-                <label>
+            <form action="#" className="b-form">
+                <label className="b-form__label">
                     <input
+                        className="b-form__input"
                         type="text"
                         placeholder="First name"
                         ref={(input) => this.firstNameInput = input}
                         onChange={this.onChangeFirstNameInput}
                     />
+                    <div className={`b-form__notification ${this.props.firstNameIsValid ? '' : 'show'}`}>Invalid first name</div>
                 </label>
-                <label>
+                <label className="b-form__label">
                     <input
+                        className="b-form__input"
                         type="text"
                         placeholder="Last name"
                         ref={(input) => this.lastNameInput = input}
                         onChange={this.onChangeLastNameInput}
                     />
                 </label>
-                <label>
+                <label className="b-form__label">
                     <input
+                        className="b-form__input"
                         type="text"
                         placeholder="E-mail"
                         ref={(input) => this.emailInput = input}
                         onChange={this.onChangeEmailInput}
                     />
                 </label>
-                <label>
+                <label className="b-form__label">
                     <input
+                        className="b-form__input"
                         type="text"
                         placeholder="Password"
                         ref={(input) => this.passwordInput = input}
@@ -64,7 +71,7 @@ class LoginForm extends Component {
                 </label>
                 
 
-                <button onClick={this.handleSubmitForm}>Login</button>
+                <button onClick={this.handleSubmitForm}>Sign Up</button>
 
             </form>
         )

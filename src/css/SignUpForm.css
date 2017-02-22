@@ -1,0 +1,32 @@
+.b-form {
+    background-color: aquamarine;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.b-form__label {
+    position: relative;
+    padding: 20px;
+}
+
+.b-form__input {
+    width: 100%;
+}
+
+.b-form__notification {
+    display: none;
+    position: absolute;
+    bottom: -10px;
+    left: 20px;
+    padding: 5px;
+    color: red;
+    border: 1px solid red;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.b-form__notification.show {
+    display: block;
+}
+
