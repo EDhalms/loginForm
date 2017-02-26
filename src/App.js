@@ -48,7 +48,7 @@ class App extends Component {
         this.validateForm();
 
         //console.log('this.props.userData', this.props.userData);
-        console.log('THIS IS SUBMIT');
+        //console.log('THIS IS SUBMIT');
     };
 
     validateForm = () => {
@@ -60,17 +60,25 @@ class App extends Component {
 
         let errors = [];
 
-        this.validateField(patterns.name, this.props.userData.firstName, this.props.validateFirstName);
-        this.validateField(patterns.name, this.props.userData.lastName, this.props.validateLastName);
-        this.validateField(patterns.email, this.props.userData.email, this.props.validateEmail);
-        this.validateField(patterns.password, this.props.userData.password, this.props.validatePassword);
+        this.validateField(patterns.name, this.props.userData.firstName, this.props.validateFirstName, errors);
+        this.validateField(patterns.name, this.props.userData.lastName, this.props.validateLastName, errors);
+        this.validateField(patterns.email, this.props.userData.email, this.props.validateEmail, errors);
+        this.validateField(patterns.password, this.props.userData.password, this.props.validatePassword, errors);
+
+        console.log(errors);
+        if (!errors.length) {
+            console.log('submit');
+        } else {
+            console.log('errors');
+        }
     };
 
-    validateField = (pattern, fieldValue, dispatcherError) => {
+    validateField = (pattern, fieldValue, dispatcherError, errorsArray) => {
         if (pattern.test(fieldValue) && fieldValue.length) {
             dispatcherError(true);
         } else {
             dispatcherError(false);
+            errorsArray.push(fieldValue);
         }
     };
 
@@ -101,6 +109,9 @@ class App extends Component {
                     onChangeEmailInput={this.onChangeEmailInput}
                     userData={this.props.userData}
                     firstNameIsValid={this.props.formErrors.firstNameIsValid}
+                    lastNameIsValid={this.props.formErrors.lastNameIsValid}
+                    emailIsValid={this.props.formErrors.emailIsValid}
+                    passwordIsValid={this.props.formErrors.passwordIsValid}
                 />
             </div>
         );
