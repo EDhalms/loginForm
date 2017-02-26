@@ -78,10 +78,6 @@ class App extends Component {
         }
     };
 
-  /*  cleanForm = () => {
-
-    };*/
-
     validateField = (pattern, fieldValue, dispatcherError, errorsArray) => {
         if (pattern.test(fieldValue) && fieldValue.length) {
             dispatcherError(true);
