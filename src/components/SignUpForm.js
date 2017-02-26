@@ -29,53 +29,53 @@ class LoginForm extends Component {
     };
     
     render() {
-
         return(
             <div className="b-form-wrap">
-                <form action="#" className="b-form">
+                <form action="#" className={`b-form ${this.props.formSubmitStatus.formIsSubmitted ? 'hide' : ''}`}>
                     <div className="b-form__field">
+
                         <input
-                            className="b-form__input"
+                            className={`b-form__input ${this.props.userData.firstName.length ? 'dirty' : ''}`}
                             type="text"
                             ref={(input) => this.firstNameInput = input}
                             onChange={this.onChangeFirstNameInput}
                         />
                         <label className="b-form__label">First name</label>
-                        <div className="b-form__focus-line">&nbsp;</div>
-                        <div className={`b-form__notification ${this.props.firstNameIsValid ? '' : 'show'}`}>Invalid first name</div>
+                        <div className={`b-form__focus-line ${this.props.isValid.firstNameIsValid ? '' : 'error'}`}>&nbsp;</div>
+                        <div className={`b-form__notification ${this.props.isValid.firstNameIsValid ? '' : 'error'}`}>Invalid first name</div>
                     </div>
                     <div className="b-form__field">
                         <input
-                            className="b-form__input"
+                            className={`b-form__input ${this.props.userData.lastName.length ? 'dirty' : ''}`}
                             type="text"
                             ref={(input) => this.lastNameInput = input}
                             onChange={this.onChangeLastNameInput}
                         />
                         <label className="b-form__label">Last name</label>
-                        <div className="b-form__focus-line">&nbsp;</div>
-                        <div className={`b-form__notification ${this.props.lastNameIsValid ? '' : 'show'}`}>Invalid last name</div>
+                        <div className={`b-form__focus-line ${this.props.isValid.lastNameIsValid ? '' : 'error'}`}>&nbsp;</div>
+                        <div className={`b-form__notification ${this.props.isValid.lastNameIsValid ? '' : 'error'}`}>Invalid last name</div>
                     </div>
                     <div className="b-form__field">
                         <input
-                            className="b-form__input"
+                            className={`b-form__input ${this.props.userData.email.length ? 'dirty' : ''}`}
                             type="text"
                             ref={(input) => this.emailInput = input}
                             onChange={this.onChangeEmailInput}
                         />
                         <label className="b-form__label">E-mail</label>
-                        <div className="b-form__focus-line">&nbsp;</div>
-                        <div className={`b-form__notification ${this.props.emailIsValid ? '' : 'show'}`}>Invalid email</div>
+                        <div className={`b-form__focus-line ${this.props.isValid.emailIsValid ? '' : 'error'}`}>&nbsp;</div>
+                        <div className={`b-form__notification ${this.props.isValid.emailIsValid ? '' : 'error'}`}>Invalid email</div>
                     </div>
                     <div className="b-form__field">
                         <input
-                            className="b-form__input"
+                            className={`b-form__input ${this.props.userData.password.length ? 'dirty' : ''}`}
                             type="text"
                             ref={(input) => this.passwordInput = input}
                             onChange={this.onChangePasswordInput}
                         />
                         <label className="b-form__label">Password</label>
-                        <div className="b-form__focus-line">&nbsp;</div>
-                        <div className={`b-form__notification ${this.props.passwordIsValid ? '' : 'show'}`}>Invalid password</div>
+                        <div className={`b-form__focus-line ${this.props.isValid.passwordIsValid ? '' : 'error'}`}>&nbsp;</div>
+                        <div className={`b-form__notification ${this.props.isValid.passwordIsValid ? '' : 'error'}`}>Invalid password</div>
                     </div>
                     <div className="b-form__controls">
                         <button
@@ -83,10 +83,13 @@ class LoginForm extends Component {
                             onClick={this.handleSubmitForm}
                         >Sign Up</button>
                     </div>
-
                 </form>
-            </div>    
+                <div className={`b-form-success-message ${this.props.formSubmitStatus.formIsSubmitted ? '' : 'hide'}`}>
+                    Registration is complete
+                </div>
+            </div>
         )
+
     }
 }
 

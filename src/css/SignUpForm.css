@@ -14,6 +14,10 @@
     background: #fff;
 }
 
+.b-form.hide, .b-form-success-message.hide {
+    display: none;
+}
+
 .b-form__field {
     position: relative;
     margin: 30px 0;
@@ -56,13 +60,20 @@
     transition: width .3s ease-in-out;
 }
 
-.b-form__input:focus ~ .b-form__label {
+.b-form__input:focus ~ .b-form__label,
+.b-form__input.dirty ~ .b-form__label {
     top: -13px;
     font-size: 14px;
     color: #3899ec;
 }
 
-.b-form__input:focus ~ .b-form__focus-line {
+.b-form__input:focus ~ .b-form__focus-line,
+.b-form__input.dirty ~ .b-form__focus-line {
+    width: 100%;
+}
+
+.b-form__focus-line.error {
+    background: red;
     width: 100%;
 }
 
@@ -76,7 +87,7 @@
     z-index: 10;
 }
 
-.b-form__notification.show {
+.b-form__notification.error {
     display: block;
 }
 

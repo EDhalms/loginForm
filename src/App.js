@@ -9,12 +9,14 @@ import LoginForm from './components/SignUpForm';
 //import of actions
 import * as formFieldsActions from './actions/formFields';
 import * as formErrorsActions from './actions/formErrors';
+import * as formSubmitActions from './actions/formSubmitted';
 //import of actions
 
 function mapStateToProps(state) {
     return {
         userData: state.formFields,
-        formErrors: state.formErrors
+        formErrors: state.formErrors,
+        formSubmitStatus: state.formSubmitted
     }
 }
 
@@ -31,8 +33,11 @@ function mapDispatchToProps(dispatch) {
         validateFirstName: formErrorsActions.validateFirstName,
         validateLastName: formErrorsActions.validateLastName,
         validateEmail: formErrorsActions.validateEmail,
-        validatePassword: formErrorsActions.validatePassword
+        validatePassword: formErrorsActions.validatePassword,
         // form errors
+
+        //submitted form
+        formSubmitted: formSubmitActions.formSubmitted
     }, dispatch)
 }
 
@@ -65,13 +70,17 @@ class App extends Component {
         this.validateField(patterns.email, this.props.userData.email, this.props.validateEmail, errors);
         this.validateField(patterns.password, this.props.userData.password, this.props.validatePassword, errors);
 
-        console.log(errors);
         if (!errors.length) {
             console.log('submit');
+            this.props.formSubmitted(true);
         } else {
             console.log('errors');
         }
     };
+
+  /*  cleanForm = () => {
+
+    };*/
 
     validateField = (pattern, fieldValue, dispatcherError, errorsArray) => {
         if (pattern.test(fieldValue) && fieldValue.length) {
@@ -105,13 +114,15 @@ class App extends Component {
                     onChangeFirstName={this.onChangeFirstNameInput}
                     onChangeLastName={this.onChangeLastNameInput}
                     onChangePassword={this.onChangePassword}
-                    handleSubmitForm={this.handleSubmitForm}
                     onChangeEmailInput={this.onChangeEmailInput}
+
+                    handleSubmitForm={this.handleSubmitForm}
+
                     userData={this.props.userData}
-                    firstNameIsValid={this.props.formErrors.firstNameIsValid}
-                    lastNameIsValid={this.props.formErrors.lastNameIsValid}
-                    emailIsValid={this.props.formErrors.emailIsValid}
-                    passwordIsValid={this.props.formErrors.passwordIsValid}
+
+                    formSubmitStatus={this.props.formSubmitStatus}
+
+                    isValid={this.props.formErrors}
                 />
             </div>
         );
