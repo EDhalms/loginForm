@@ -1,9 +1,13 @@
-<h1>Installation</h1>
+# Super puper registration form
+### Installation
+```sh
+$ sudo npm install -g create-react-app
+$ git clone https://github.com/EDhalms/loginForm.git
+$ cd loginForm
+$ npm install
+```
 
-npm install -g create-react-app</br>
-`
-$ git clone https://github.com/EDhalms/loginForm.git</br>
-$ cd loginForm</br>
-$ npm install</br>
-$ npm start</br>
-`
+### Running
+```sh
+$ npm start
+```
