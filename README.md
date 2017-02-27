@@ -1,4 +1,4 @@
-Installation</br>
+<h1>Installation</h1>
 
 npm install -g create-react-app</br>
 
