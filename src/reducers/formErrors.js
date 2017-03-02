@@ -24,7 +24,7 @@ export default function formErrors(state = initialState, action) {
             break;
         case 'VALIDATE_PASSWORD':
             return {
-                ...state, ...{passwordIsValid: action.value}    
+                ...state, ...{passwordIsValid: action.value}
             };
             break;
         default:

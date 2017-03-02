@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 
-import '../css/SignUpForm.css';
+import FormField from './FormField';
+
+import '../../css/SignUpForm.css';
 
 class LoginForm extends Component {
     
@@ -22,6 +24,11 @@ class LoginForm extends Component {
 
     onChangeEmailInput = () => {
         this.props.onChangeEmailInput(this.emailInput.value);
+    };
+
+    onChangeInput = () => {
+        this.props.onChangeInput();
+        console.log('www');
     };
 
     handleSubmitForm = (e) => {
@@ -69,7 +76,7 @@ class LoginForm extends Component {
                     <div className="b-form__field">
                         <input
                             className={`b-form__input ${this.props.userData.password.length ? 'dirty' : ''}`}
-                            type="text"
+                            type="password"
                             ref={(input) => this.passwordInput = input}
                             onChange={this.onChangePasswordInput}
                         />
@@ -77,6 +84,15 @@ class LoginForm extends Component {
                         <div className={`b-form__focus-line ${this.props.isValid.passwordIsValid ? '' : 'error'}`}>&nbsp;</div>
                         <div className={`b-form__notification ${this.props.isValid.passwordIsValid ? '' : 'error'}`}>Invalid password</div>
                     </div>
+
+                    <FormField
+                        inputValue={this.props.userData.password}
+                        inputType='password'
+                        //onChangeInput={this.onChangeInput.bind(this, 'addPassword', 'www')}
+                        label='Password'
+                        inputIsValid={this.props.isValid.passwordIsValid}
+                    />
+
                     <div className="b-form__controls">
                         <button
                             className="b-form__btn"
