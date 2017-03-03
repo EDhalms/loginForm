@@ -8,12 +8,10 @@ class FormField extends Component {
     }
 
     handleInputChange = (e) => {
-        console.log('1');
-        //if(typeof this.props.onChangeInput === 'function') {
-            //this.props.onChangeInput(e.target.value);
-            //this.props.onChangeInput();
-
-        //}
+        if(typeof this.props.onChangeInput === 'function') {
+            console.log('input component - ', e.target.value);
+            this.props.onChangeInput(e.target.value);
+        }
     };
 
     render() {
@@ -22,7 +20,7 @@ class FormField extends Component {
                 <input
                     className={`b-form__input ${this.props.inputValue.length ? 'dirty' : ''}`}
                     type={this.props.inputType}
-                    onChange={this.props.handleInputChange}
+                    onChange={(e) => this.handleInputChange(e)}
                 />
                 <label className="b-form__label">{this.props.label}</label>
                 <div className={`b-form__focus-line ${this.props.inputIsValid ? '' : 'error'}`}>&nbsp;</div>

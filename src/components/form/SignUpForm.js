@@ -26,9 +26,9 @@ class LoginForm extends Component {
         this.props.onChangeEmailInput(this.emailInput.value);
     };
 
-    onChangeInput = () => {
-        this.props.onChangeInput();
-        console.log('www');
+    onChangeInput = (e) => {
+        //this.props.onChangeInput();
+        console.log('form component - ', e);
     };
 
     handleSubmitForm = (e) => {
@@ -88,7 +88,7 @@ class LoginForm extends Component {
                     <FormField
                         inputValue={this.props.userData.password}
                         inputType='password'
-                        //onChangeInput={this.onChangeInput.bind(this, 'addPassword', 'www')}
+                        onChangeInput={(e)=> this.onChangeInput(e)}
                         label='Password'
                         inputIsValid={this.props.isValid.passwordIsValid}
                     />

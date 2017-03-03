@@ -103,8 +103,9 @@ class SingUpFormContainer extends Component {
         this.props.addPassword(password);
     };
 
-    onChangeInput = (dispatchType, inputValue) => {
-        this.props.dispatchType(inputValue);
+    onChangeInput = (dispatchType, inputValue, testArgument) => {
+        dispatchType(inputValue);
+        //console.log('container and testArgument - ', testArgument);
     };
 
     render() {
