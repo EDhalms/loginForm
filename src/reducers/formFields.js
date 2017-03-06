@@ -1,8 +1,10 @@
 let initialState = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: ''
+    user: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: ''
+    }
 };
 
 export default function formFields(state = initialState, action) {

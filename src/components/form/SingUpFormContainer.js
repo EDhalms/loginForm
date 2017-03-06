@@ -14,7 +14,7 @@ import * as formSubmitActions from '../../actions/formSubmitted';
 
 function mapStateToProps(state) {
     return {
-        userData: state.formFields,
+        user: state.formFields.user,
         formErrors: state.formErrors,
         formSubmitStatus: state.formSubmitted
     }
