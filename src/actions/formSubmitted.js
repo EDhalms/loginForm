@@ -4,3 +4,21 @@ export function formSubmitted(value) {
         value
     }
 }
+
+export function changeInput(userData) {
+    return {
+        type: 'CHANGE_INPUT_FIELD',
+        userData
+    }
+}
+
+// let actions = {
+//     changeInput (userData) {
+//         return {
+//             type: 'CHANGE_INPUT_FIELD',
+//             userData
+//         }
+//     }
+// }
+
+// export default actions

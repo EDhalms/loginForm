@@ -14,7 +14,7 @@ import * as formSubmitActions from '../../actions/formSubmitted';
 
 function mapStateToProps(state) {
     return {
-        user: state.formFields.user,
+        userData: state.formFields.userData,
         formErrors: state.formErrors,
         formSubmitStatus: state.formSubmitted
     }
@@ -37,7 +37,8 @@ function mapDispatchToProps(dispatch) {
         // form errors
 
         //submitted form
-        formSubmitted: formSubmitActions.formSubmitted
+        formSubmitted: formSubmitActions.formSubmitted,
+        changeInput : formSubmitActions.changeInput
     }, dispatch)
 }
 
@@ -103,9 +104,18 @@ class SingUpFormContainer extends Component {
         this.props.addPassword(password);
     };
 
-    onChangeInput = (dispatchType, inputValue, testArgument) => {
-        dispatchType(inputValue);
-        //console.log('container and testArgument - ', testArgument);
+    onChangeInput = (type, text) => {
+        let tmpPayload = {};
+        let payload = {};
+        tmpPayload[type] = text;
+        payload = Object.assign({}, this.props.userData, tmpPayload);
+
+        this.props.changeInput(payload);
+
+        // console.log(this.props.type);
+        // console.log('container component - ', e);
+        // console.log('container component type - ', type);
+
     };
 
     render() {

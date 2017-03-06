@@ -20,7 +20,8 @@ class FormField extends Component {
                 <input
                     className={`b-form__input ${this.props.inputValue.length ? 'dirty' : ''}`}
                     type={this.props.inputType}
-                    onChange={(e) => this.handleInputChange(e)}
+                    //onChange={(e) => this.handleInputChange(e)}
+                    onChange={this.handleInputChange}
                 />
                 <label className="b-form__label">{this.props.label}</label>
                 <div className={`b-form__focus-line ${this.props.inputIsValid ? '' : 'error'}`}>&nbsp;</div>

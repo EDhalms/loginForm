@@ -26,13 +26,11 @@ class LoginForm extends Component {
         this.props.onChangeEmailInput(this.emailInput.value);
     };
 
-    onChangeInput = (propName, event) => {
-        let tmpPayload = {};
-        let payload = {};
-        tmpPayload[propName] = event.nativeEvent.text;
-        payload = Object.assign({}, this.props.user, tmpPayload);
-
-        this.props.changeInput(payload);
+    onChangeInput = (e, type) => {
+        debugger;
+        console.log('form component - ', e);
+        console.log('form component type - ', type);
+        this.props.onChangeInput(e, type);
     };
 
     handleSubmitForm = (e) => {
@@ -43,7 +41,7 @@ class LoginForm extends Component {
         return(
             <div className="b-form-wrap">
                 <form action="#" className={`b-form ${this.props.formSubmitStatus.formIsSubmitted ? 'hide' : ''}`}>
-                    <div className="b-form__field">
+                    {/*<div className="b-form__field">
 
                         <input
                             className={`b-form__input ${this.props.userData.firstName.length ? 'dirty' : ''}`}
@@ -87,12 +85,13 @@ class LoginForm extends Component {
                         <label className="b-form__label">Password</label>
                         <div className={`b-form__focus-line ${this.props.isValid.passwordIsValid ? '' : 'error'}`}>&nbsp;</div>
                         <div className={`b-form__notification ${this.props.isValid.passwordIsValid ? '' : 'error'}`}>Invalid password</div>
-                    </div>
+                    </div>*/}
 
                     <FormField
-                        inputValue={this.props.user.password}
+                        inputValue={this.props.userData.password}
                         inputType='password'
-                        onChangeInput={this.onChangeInput.bind(this, 'password')}
+                        //onChangeInput={(e) => this.onChangeInput(e, 'addPassword')}
+                        onChangeInput={this.props.onChangeInput.bind(this, 'password')}
                         label='Password'
                         inputIsValid={this.props.isValid.passwordIsValid}
                     />
