@@ -105,10 +105,13 @@ class SingUpFormContainer extends Component {
     };
 
     onChangeInput = (type, text) => {
-        let tmpPayload = {};
-        let payload = {};
+        let tmpPayload = {},
+            payload = {};
+
         tmpPayload[type] = text;
-        payload = Object.assign({}, this.props.userData, tmpPayload);
+        payload = {...this.props.userData, ...tmpPayload};
+
+        console.log(payload);
 
         this.props.changeInput(payload);
 
