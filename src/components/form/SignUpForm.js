@@ -10,25 +10,7 @@ class LoginForm extends Component {
         super(props);
     }
 
-   /* onChangeFirstNameInput = () => {
-        this.props.onChangeFirstName(this.firstNameInput.value);
-    };
-
-    onChangeLastNameInput = () => {
-        this.props.onChangeLastName(this.lastNameInput.value);
-    };
-
-    onChangePasswordInput = () => {
-        this.props.onChangePassword(this.passwordInput.value);
-    };
-
-    onChangeEmailInput = () => {
-        this.props.onChangeEmailInput(this.emailInput.value);
-    };*/
-
     onChangeInput = (e, type) => {
-        console.log('form component - ', e);
-        console.log('form component type - ', type);
         this.props.onChangeInput(e, type);
     };
 

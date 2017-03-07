@@ -23,12 +23,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         //form fields values
-
-        /*addFirstName: formFieldsActions.addFirstName,
-        addLastName: formFieldsActions.addLastName,
-        addEmail: formFieldsActions.addEmail,
-        addPassword: formFieldsActions.addPassword,*/
-
         changeInput : formFieldsActions.changeInput,
         //form fields values
 
@@ -41,6 +35,7 @@ function mapDispatchToProps(dispatch) {
 
         //submitted form
         formSubmitted: formSubmitActions.formSubmitted
+        //submitted form
     }, dispatch)
 }
 
@@ -90,22 +85,6 @@ class SingUpFormContainer extends Component {
         }
     };
 
-    /*onChangeFirstNameInput = (firstName) => {
-        this.props.addFirstName(firstName);
-    };
-
-    onChangeLastNameInput = (lastName) => {
-        this.props.addLastName(lastName);
-    };
-
-    onChangeEmailInput = (email) => {
-        this.props.addEmail(email);
-    };
-
-    onChangePassword = (password) => {
-        this.props.addPassword(password);
-    };*/
-
     onChangeInput = (type, text) => {
         let tmpPayload = {},
             payload = {};
@@ -125,11 +104,6 @@ class SingUpFormContainer extends Component {
         return (
             <div className="App">
                 <LoginForm
-                    onChangeFirstName={this.onChangeFirstNameInput}
-                    onChangeLastName={this.onChangeLastNameInput}
-                    onChangePassword={this.onChangePassword}
-                    onChangeEmailInput={this.onChangeEmailInput}
-
                     onChangeInput={this.onChangeInput}
 
                     handleSubmitForm={this.handleSubmitForm}
