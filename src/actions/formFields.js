@@ -34,6 +34,10 @@ export function changeInput(userData) {
     }
 }
 
+export default {
+    changeInput,
+};
+
 // let actions = {
 //     changeInput (userData) {
 //         return {

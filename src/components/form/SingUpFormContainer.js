@@ -47,7 +47,6 @@ class SingUpFormContainer extends Component {
 
     handleSubmitForm = (e) => {
         e.preventDefault();
-
         this.validateForm();
 
         //console.log('this.props.userData', this.props.userData);
