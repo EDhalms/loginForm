@@ -29,7 +29,7 @@ export default function formFields(state = initialState, action) {
         //         ...state, ...{password : action.password}
         //     };
         //     break;
-        case 'CHANGE_INPUT_FIELD' :
+        case 'CHANGE_INPUT_FIELD':
             return {
                 ...state, ...{userData: action.userData}
             };

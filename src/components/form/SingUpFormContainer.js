@@ -23,10 +23,13 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         //form fields values
-        addFirstName: formFieldsActions.addFirstName,
+
+        /*addFirstName: formFieldsActions.addFirstName,
         addLastName: formFieldsActions.addLastName,
         addEmail: formFieldsActions.addEmail,
-        addPassword: formFieldsActions.addPassword,
+        addPassword: formFieldsActions.addPassword,*/
+
+        changeInput : formFieldsActions.changeInput,
         //form fields values
 
         // form errors
@@ -37,8 +40,7 @@ function mapDispatchToProps(dispatch) {
         // form errors
 
         //submitted form
-        formSubmitted: formSubmitActions.formSubmitted,
-        changeInput : formSubmitActions.changeInput
+        formSubmitted: formSubmitActions.formSubmitted
     }, dispatch)
 }
 
@@ -88,7 +90,7 @@ class SingUpFormContainer extends Component {
         }
     };
 
-    onChangeFirstNameInput = (firstName) => {
+    /*onChangeFirstNameInput = (firstName) => {
         this.props.addFirstName(firstName);
     };
 
@@ -102,7 +104,7 @@ class SingUpFormContainer extends Component {
 
     onChangePassword = (password) => {
         this.props.addPassword(password);
-    };
+    };*/
 
     onChangeInput = (type, text) => {
         let tmpPayload = {},
@@ -110,8 +112,6 @@ class SingUpFormContainer extends Component {
 
         tmpPayload[type] = text;
         payload = {...this.props.userData, ...tmpPayload};
-
-        console.log(payload);
 
         this.props.changeInput(payload);
 
