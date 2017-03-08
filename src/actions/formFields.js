@@ -1,4 +1,4 @@
-export function addFirstName(firstName) {
+/*export function addFirstName(firstName) {
     return {
         type: 'ADD_FIRST_NAME',
         firstName
@@ -24,4 +24,27 @@ export function addPassword(password) {
         type: 'ADD_PASSWORD',
         password
     }
+}*/
+
+
+export function changeInput(userData) {
+    return {
+        type: 'CHANGE_INPUT_FIELD',
+        userData
+    }
 }
+
+export default {
+    changeInput,
+};
+
+// let actions = {
+//     changeInput (userData) {
+//         return {
+//             type: 'CHANGE_INPUT_FIELD',
+//             userData
+//         }
+//     }
+// }
+
+// export default actions
