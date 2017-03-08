@@ -15,7 +15,7 @@ let initialState = {
 
 export default function formFields(state = initialState, action) {
     switch (action.type) {
-        case 'CHANGE_INPUT_FIELD':
+        case 'CHANGE_INPUT':
             return {
                 ...state, ...{userData: action.userData}
             };
@@ -23,10 +23,10 @@ export default function formFields(state = initialState, action) {
             return {
                 ...state, ...{userData: action.errors}
             };
-        case 'FORM_SUBMIT':
+        /*case 'FORM_SUBMIT':
             return {
                 ...state, ...{userData: action.userData}
-            };
+            };*/
         default:
             return state;
     }

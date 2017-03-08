@@ -15,6 +15,7 @@ import * as formSubmitActions from '../../actions/formSubmitted';
 function mapStateToProps(state) {
     return {
         userData: state.formFields.userData,
+        errors: state.formFields.errors,
         formErrors: state.formErrors,
         formSubmitStatus: state.formSubmitted
     }
@@ -27,6 +28,8 @@ function mapDispatchToProps(dispatch) {
         //form fields values
 
         // form errors
+
+
         validateFirstName: formErrorsActions.validateFirstName,
         validateLastName: formErrorsActions.validateLastName,
         validateEmail: formErrorsActions.validateEmail,

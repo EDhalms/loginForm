@@ -27,16 +27,19 @@ export function addPassword(password) {
 }*/
 
 
-export function changeInput(userData) {
+export default function changeInput(userData) {
     return {
-        type: 'CHANGE_INPUT_FIELD',
+        type: 'CHANGE_INPUT',
         userData
     }
 }
 
-export default {
-    changeInput,
-};
+export default function validateInput(userData) {
+    return {
+        type: 'VALIDATE_INPUT',
+        userData
+    }
+}
 
 // let actions = {
 //     changeInput (userData) {
