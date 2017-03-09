@@ -16,6 +16,7 @@ function mapStateToProps(state) {
     return {
         userData: state.formFields.userData,
         errors: state.formFields.errors,
+
         formErrors: state.formErrors,
         formSubmitStatus: state.formSubmitted
     }
@@ -28,7 +29,7 @@ function mapDispatchToProps(dispatch) {
         //form fields values
 
         // form errors
-
+        validateInput : formFieldsActions.validateInput,
 
         validateFirstName: formErrorsActions.validateFirstName,
         validateLastName: formErrorsActions.validateLastName,
@@ -51,9 +52,6 @@ class SingUpFormContainer extends Component {
     handleSubmitForm = (e) => {
         e.preventDefault();
         this.validateForm();
-
-        //console.log('this.props.userData', this.props.userData);
-        //console.log('THIS IS SUBMIT');
     };
 
     validateForm = () => {
@@ -70,6 +68,8 @@ class SingUpFormContainer extends Component {
         this.validateField(patterns.email, this.props.userData.email, this.props.validateEmail, errors);
         this.validateField(patterns.password, this.props.userData.password, this.props.validatePassword, errors);
 
+        this.validateInput(this.props.userData, patterns);
+
         if (!errors.length) {
             console.log('submit');
             this.props.formSubmitted(true);
@@ -77,6 +77,36 @@ class SingUpFormContainer extends Component {
             console.log('errors');
         }
     };
+
+    //new
+    validateInput = (userData, patterns) => {
+        let errors = {};
+
+        for (let field in userData) {
+            if (field === 'firstName') {
+                this.checkInputOnValid(field, userData[field], patterns.name, errors);
+            } else if ( field === 'lastName') {
+                this.checkInputOnValid(field, userData[field], patterns.name, errors);
+            } else if (field === 'email') {
+                this.checkInputOnValid(field, userData[field], patterns.email, errors);
+            } else if (field === 'password') {
+                this.checkInputOnValid(field, userData[field], patterns.password, errors);
+            }
+        }
+
+        this.props.validateInput(errors);
+    };
+
+    checkInputOnValid = (field, fieldValue, pattern, errorsObj) => {
+        if (pattern.test(fieldValue) && fieldValue.length) {
+            console.log(field, ' is valid');
+            errorsObj[field] = true;
+        } else {
+            console.log(field, ' is NOT valid');
+            errorsObj[field] = false;
+        }
+    };
+    //new
 
     validateField = (pattern, fieldValue, dispatcherError, errorsArray) => {
         if (pattern.test(fieldValue) && fieldValue.length) {
@@ -95,10 +125,6 @@ class SingUpFormContainer extends Component {
         payload = {...this.props.userData, ...tmpPayload};
 
         this.props.changeInput(payload);
-
-        // console.log(this.props.type);
-        // console.log('container component - ', e);
-        // console.log('container component type - ', type);
 
     };
 

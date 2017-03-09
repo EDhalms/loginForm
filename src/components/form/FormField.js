@@ -9,7 +9,6 @@ class FormField extends Component {
 
     handleInputChange = (e) => {
         if(typeof this.props.onChangeInput === 'function') {
-            console.log('input component - ', e.target.value);
             this.props.onChangeInput(e.target.value);
         }
     };

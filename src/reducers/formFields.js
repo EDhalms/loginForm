@@ -21,7 +21,7 @@ export default function formFields(state = initialState, action) {
             };
         case 'VALIDATE_INPUT':
             return {
-                ...state, ...{userData: action.errors}
+                ...state, ...{errors: action.errors}
             };
         /*case 'FORM_SUBMIT':
             return {
