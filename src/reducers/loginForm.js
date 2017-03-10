@@ -10,10 +10,13 @@ let initialState = {
         lastNameIsValid: true,
         emailIsValid: true,
         passwordIsValid: true
+    },
+    formSubmit: {
+        formIsSubmitted: false
     }
 };
 
-export default function formFields(state = initialState, action) {
+export default function loginForm(state = initialState, action) {
     switch (action.type) {
         case 'CHANGE_INPUT':
             return {
@@ -23,10 +26,10 @@ export default function formFields(state = initialState, action) {
             return {
                 ...state, ...{errors: action.errors}
             };
-        /*case 'FORM_SUBMIT':
+        case 'FORM_SUBMIT':
             return {
-                ...state, ...{userData: action.userData}
-            };*/
+                ...state, ...{formSubmit: action.status}
+            };
         default:
             return state;
     }

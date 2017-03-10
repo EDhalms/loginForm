@@ -7,18 +7,14 @@ import '../../css/SignUpForm.css';
 import LoginForm from './SignUpForm';
 
 //import of actions
-import * as formFieldsActions from '../../actions/formFields';
-import * as formErrorsActions from '../../actions/formErrors';
-import * as formSubmitActions from '../../actions/formSubmitted';
+import * as formFieldsActions from '../../actions/loginForm';
 //import of actions
 
 function mapStateToProps(state) {
     return {
-        userData: state.formFields.userData,
-        errors: state.formFields.errors,
-
-        formErrors: state.formErrors,
-        formSubmitStatus: state.formSubmitted
+        userData: state.loginForm.userData,
+        errors: state.loginForm.errors,
+        formSubmitStatus: state.loginForm.formSubmit
     }
 }
 
@@ -30,15 +26,10 @@ function mapDispatchToProps(dispatch) {
 
         // form errors
         validateInput : formFieldsActions.validateInput,
-
-        validateFirstName: formErrorsActions.validateFirstName,
-        validateLastName: formErrorsActions.validateLastName,
-        validateEmail: formErrorsActions.validateEmail,
-        validatePassword: formErrorsActions.validatePassword,
         // form errors
 
         //submitted form
-        formSubmitted: formSubmitActions.formSubmitted
+        formSubmitted: formFieldsActions.formSubmit
         //submitted form
     }, dispatch)
 }
@@ -55,26 +46,23 @@ class SingUpFormContainer extends Component {
     };
 
     validateForm = () => {
-        let patterns = {
-            name: /^[A-Za-zА-Яа-я_ -]{1,}$/,
-            email: /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i,
-            password: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/
-        };
+        let errorsCounter = [],
+            formSubmit = {},
+            patterns = {
+                name: /^[A-Za-zА-Яа-я_ -]{1,}$/,
+                email: /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i,
+                password: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/
+            };
 
-        let errorsCounter = [];
-
-        /*this.validateField(patterns.name, this.props.userData.firstName, this.props.validateFirstName, errors);
-        this.validateField(patterns.name, this.props.userData.lastName, this.props.validateLastName, errors);
-        this.validateField(patterns.email, this.props.userData.email, this.props.validateEmail, errors);
-        this.validateField(patterns.password, this.props.userData.password, this.props.validatePassword, errors);*/
 
         this.validateInput(this.props.userData, patterns, errorsCounter);
 
         if (!errorsCounter.length) {
-            console.log('submit');
-            this.props.formSubmitted(true);
+            //console.log('submit');
+            formSubmit['formIsSubmitted'] = true;
+            this.props.formSubmitted(formSubmit);
         } else {
-            console.log('errors');
+            //console.log('errors');
         }
     };
 
@@ -98,10 +86,10 @@ class SingUpFormContainer extends Component {
 
     checkInputOnValid = (field, fieldValue, pattern, errorsObj, errorsCounter) => {
         if (pattern.test(fieldValue) && fieldValue.length) {
-            console.log(field, ' is valid');
+            //console.log(field, ' is valid');
             errorsObj[field + 'IsValid'] = true;
         } else {
-            console.log(field, ' is NOT valid');
+            //console.log(field, ' is NOT valid');
             errorsObj[field + 'IsValid'] = false;
             errorsCounter.push(field);
         }
@@ -123,7 +111,6 @@ class SingUpFormContainer extends Component {
             <div className="App">
                 <LoginForm
                     onChangeInput={this.onChangeInput}
-
                     handleSubmitForm={this.handleSubmitForm}
 
                     userData={this.props.userData}
