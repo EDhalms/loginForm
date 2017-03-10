@@ -31,7 +31,7 @@ class LoginForm extends Component {
                         inputType='text'
                         onChangeInput={this.props.onChangeInput.bind(this, 'firstName')}
                         label='First name'
-                        inputIsValid={this.props.isValid.firstNameIsValid}
+                        inputIsValid={this.props.errors.firstNameIsValid}
                     />
 
                     <FormField
@@ -39,7 +39,7 @@ class LoginForm extends Component {
                         inputType='text'
                         onChangeInput={this.props.onChangeInput.bind(this, 'lastName')}
                         label='Last name'
-                        inputIsValid={this.props.isValid.lastNameIsValid}
+                        inputIsValid={this.props.errors.lastNameIsValid}
                     />
 
                     <FormField
@@ -47,7 +47,7 @@ class LoginForm extends Component {
                         inputType='text'
                         onChangeInput={this.props.onChangeInput.bind(this, 'email')}
                         label='E-mail'
-                        inputIsValid={this.props.isValid.emailIsValid}
+                        inputIsValid={this.props.errors.emailIsValid}
                     />
 
                     <FormField
@@ -56,7 +56,7 @@ class LoginForm extends Component {
                         //onChangeInput={(e) => this.onChangeInput(e, 'addPassword')}
                         onChangeInput={this.props.onChangeInput.bind(this, 'password')}
                         label='Password'
-                        inputIsValid={this.props.isValid.passwordIsValid}
+                        inputIsValid={this.props.errors.passwordIsValid}
                     />
 
                     <div className="b-form__controls">
